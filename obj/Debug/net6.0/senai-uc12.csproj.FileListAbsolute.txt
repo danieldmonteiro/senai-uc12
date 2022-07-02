@@ -1,0 +1,15 @@
+/Users/danielmonteiro/Documents/senai-uc12/bin/Debug/net6.0/senai-uc12
+/Users/danielmonteiro/Documents/senai-uc12/bin/Debug/net6.0/senai-uc12.deps.json
+/Users/danielmonteiro/Documents/senai-uc12/bin/Debug/net6.0/senai-uc12.runtimeconfig.json
+/Users/danielmonteiro/Documents/senai-uc12/bin/Debug/net6.0/senai-uc12.dll
+/Users/danielmonteiro/Documents/senai-uc12/bin/Debug/net6.0/senai-uc12.pdb
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.csproj.AssemblyReference.cache
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.GeneratedMSBuildEditorConfig.editorconfig
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.AssemblyInfoInputs.cache
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.AssemblyInfo.cs
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.csproj.CoreCompileInputs.cache
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.dll
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/refint/senai-uc12.dll
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.pdb
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/senai-uc12.genruntimeconfig.cache
+/Users/danielmonteiro/Documents/senai-uc12/obj/Debug/net6.0/ref/senai-uc12.dll
