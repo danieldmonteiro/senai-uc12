@@ -12,6 +12,8 @@ namespace senai_uc12.Classes
         public string? Cnpj { get; set; }
         
         public string? RazaoSocial { get; set; }
+
+        public string Caminho { get; private set; } = "Database/PessoaJuridica.csv";
         
         
         public override float PagarImposto(float rendimento)
@@ -63,5 +65,38 @@ namespace senai_uc12.Classes
         return false;
         
         }
+
+        public void Inserir(PessoaJuridica novaPj){
+
+            Utils.VerificarPastaArquivo(Caminho);
+
+            string[] pjstrings = {$"{novaPj.Nome}, {novaPj.Cnpj}, {novaPj.RazaoSocial}"};
+
+            File.AppendAllLines(Caminho, pjstrings);
+
+        }
+
+        public List<PessoaJuridica> LerArquivo(){
+
+            List<PessoaJuridica> listaPj = new List<PessoaJuridica>();
+
+            string[] linhas = File.ReadAllLines(Caminho);
+
+            foreach (string cadaLinha in linhas)
+            {
+                string[] atributos = cadaLinha.Split(",");
+
+                PessoaJuridica cadaPj = new PessoaJuridica();
+
+                cadaPj.Nome = atributos[0];
+                cadaPj.Cnpj = atributos[1];
+                cadaPj.RazaoSocial= atributos[2];
+
+                listaPj.Add(cadaPj);
+            }
+
+            return listaPj;
+        }
+
     }
 }

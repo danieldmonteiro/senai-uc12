@@ -128,6 +128,19 @@ do
 
                         listaPf.Add(novaPf);
 
+                        StreamWriter sw = new StreamWriter($"{novaPf.Nome}.txt");
+                        sw.WriteLine(novaPf.Nome);
+                        sw.WriteLine(novaPf.dataNasc);
+                        sw.WriteLine(novaPf.Cpf);
+                        sw.WriteLine(novaPf.Rendimento);
+                        sw.WriteLine(novaPf.Endereco.logradouro);
+                        sw.WriteLine(novaPf.Endereco.numero);
+                        sw.WriteLine(novaPf.Endereco.complemento);
+                        sw.WriteLine(novaPf.Endereco.endComercial);
+
+                        sw.Close();
+
+
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine($"Cadastro realizado com sucesso!");
@@ -140,31 +153,45 @@ do
 
                         Console.Clear();
 
-                        if (listaPf.Count > 0)
-                        {
-                            foreach (PessoaFisica cadaPessoa in listaPf)
-                            {
-                                Console.Clear();
-                                Console.WriteLine(@$"
-Nome: {cadaPessoa.Nome}
-Endereço: {cadaPessoa.Endereco.logradouro}, {cadaPessoa.Endereco.numero}
-Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")}
-");
+                        //if (listaPf.Count > 0)
+                        //{
+                        //  foreach (PessoaFisica cadaPessoa in listaPf)
+                        //{
+                        //  Console.Clear();
+                        //Console.WriteLine(@$"
+                        //Nome: {cadaPessoa.Nome}
+                        //Endereço: {cadaPessoa.Endereco.logradouro}, {cadaPessoa.Endereco.numero}
+                        //Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")}
+                        //");
 
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("Aperte ENTER para continuar");
-                                Console.ResetColor();
-                                Console.ReadLine();
-                            }
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine($"Lista vazia!");
-                            Thread.Sleep(3000);
-                            Console.ResetColor();
+                        //Console.ForegroundColor = ConsoleColor.DarkRed;
+                        //Console.WriteLine("Aperte ENTER para continuar");
+                        //Console.ResetColor();
+                        //Console.ReadLine();
+                        //}
+                        //}
+                        //else
+                        //{
+                        //Console.ForegroundColor = ConsoleColor.DarkRed;
+                        //Console.WriteLine($"Lista vazia!");
+                        //Thread.Sleep(3000);
+                        //Console.ResetColor();
 
+                        //}
+
+                        StreamReader sr = new StreamReader("Gabi.txt");
+
+                        string linha;
+                        while ((linha = sr.ReadLine()) != null)
+                        {
+                            Console.WriteLine($"{linha}");
                         }
+                        sr.Close();
+
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Aperte ENTER para continuar");
+                        Console.ResetColor();
+                        Console.ReadLine();
 
                         break;
 
@@ -200,37 +227,155 @@ Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")
 
             break;
 
+
+
+
+
+
+
         case "2":
 
-            PessoaJuridica novaPj = new PessoaJuridica();
-            PessoaJuridica metodosPj = new PessoaJuridica();
-            Endereco novoEndPj = new Endereco();
+            string? opcaoPj;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(@$"
+=========================================
+|     Escolha uma das opções abaixo     |
+=========================================
+|    1 - Cadastrar Pessoa Jurídica      |
+|    2 - Listar Pessoas Jurídica        |
+|                                       |
+|    0 - Voltar ao menu anterior        |
+=========================================
+");
 
-            novaPj.Nome = "Nome Pj";
-            novaPj.RazaoSocial = "Razão Social Pj";
-            novaPj.Cnpj = "00000000000100";
-            novaPj.Rendimento = 10000.5f;
+                opcaoPj = Console.ReadLine();
+                PessoaJuridica metodosPj = new PessoaJuridica();
+                
 
-            novoEndPj.logradouro = "Alameda Barão de Limeira";
-            novoEndPj.numero = 539;
-            novoEndPj.complemento = "SENAI Informática";
-            novoEndPj.endComercial = true;
+                switch (opcaoPj)
+                {
+                    case "1":
+                        PessoaJuridica novaPj = new PessoaJuridica();
+                       
+                        Endereco novoEndPj = new Endereco();
+                        
+                        Console.Clear();
+                        Console.WriteLine($"Digite o nome da pessoa jurídica que deseja cadastrar");
+                        novaPj.Nome = Console.ReadLine();
 
-            novaPj.Endereco = novoEndPj;
+                        Console.Clear();
+                        Console.WriteLine($"Digite o número do CNPJ");
+                        novaPj.Cnpj = Console.ReadLine();
+
+                        Console.Clear();
+                        Console.WriteLine($"Digite a Razão Social");
+                        novaPj.RazaoSocial = Console.ReadLine();
+
+                         metodosPj.Inserir(novaPj);
+                         
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine($"Cadastro realizado com sucesso!");
+                        Console.ResetColor();
+                        Thread.Sleep(3000);
+
+                        break;
+
+                    case "2":
+
+                        List<PessoaJuridica> listaPj = metodosPj.LerArquivo();
+
+                        foreach (PessoaJuridica cadaItem in listaPj)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(@$"
+Nome: {cadaItem.Nome}
+CNPJ: {cadaItem.Cnpj}
+Razão Social: {cadaItem.RazaoSocial}
+");
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine($"Aperte ENTER para continuar");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                        }
+
+                        break;
+
+                        //Console.Clear();
+
+                        //StreamReader sr = new StreamReader("Gabi.txt");
+
+                        //string linha;
+                        //while ((linha = sr.ReadLine()) != null)
+                        //{
+                        //Console.WriteLine($"{linha}");
+                        //}
+                        //sr.Close();
+
+                        //Console.ForegroundColor = ConsoleColor.DarkRed;
+                        //Console.WriteLine("Aperte ENTER para continuar");
+                        //Console.ResetColor();
+                        //Console.ReadLine();
+
+                        //break;
+
+                    case "0":
+
+
+
+                        break;
+
+                    default:
+
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($"Opção inválida! Digite uma opção válida!");
+                        Console.ResetColor();
+                        Thread.Sleep(3000);
+
+                        break;
+                }
+
+
+            } while (opcaoPj != "0");
 
             Console.Clear();
-            Console.WriteLine(@$"
-Nome: {novaPj.Nome}
-Razão Social: {novaPj.RazaoSocial}
-CNPJ: {novaPj.Cnpj}, Válido: {(metodosPj.ValidarCnpj(novaPj.Cnpj) ? "Sim" : "Não")}
-Endereço: {novaPj.Endereco.logradouro}, Número: {novaPj.Endereco.numero}
-Complemento: {novaPj.Endereco.complemento}
-Imposto a ser pago: {metodosPj.PagarImposto(novaPj.Rendimento).ToString("C")}
-");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine($"Aperte ENTER para continuar");
+            Console.ResetColor();
             Console.ReadLine();
 
             break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+
+            //novaPj.Nome = "Nome Pj";
+            //novaPj.RazaoSocial = "Razão Social Pj";
+            //novaPj.Cnpj = "00000000000100";
+            //novaPj.Rendimento = 10000.5f;
+
+            //novoEndPj.logradouro = "Alameda Barão de Limeira";
+            //novoEndPj.numero = 539;
+            //novoEndPj.complemento = "SENAI Informática";
+            //novoEndPj.endComercial = true;
+
+            
 
         case "0":
             Console.Clear();
