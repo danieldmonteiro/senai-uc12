@@ -58,7 +58,7 @@ O projeto está organizado em menus e sub-menus. Neles, o usuário pode optar en
 
 ## Erros comuns
 
-Podem ocorrer erros de conversão de formato envolvendo datas e valores monetários.
+Podem ocorrer erros de conversão de formato envolvendo datas e valores monetários
 
 ## Contribuidores
 
