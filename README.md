@@ -62,4 +62,4 @@ Podem ocorrer erros de conversão de formato envolvendo datas e valores monetár
 
 ## Contribuidores
 
-[Daniel Monteiro](www.linkedin.com/in/danieldmonteiro)
+[Daniel Monteiro](https://www.linkedin.com/in/danieldmonteiro)
